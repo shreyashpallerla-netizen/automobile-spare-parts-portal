@@ -1,0 +1,74 @@
+/* =====================================================
+   AutoParts Portal - Main Stylesheet
+   ===================================================== */
+
+:root {
+    --primary-dark: #212529;
+    --accent-yellow: #ffc107;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Product cards */
+.product-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12) !important;
+}
+
+/* Sidebar */
+.sidebar .nav-link {
+    color: #495057;
+    border-radius: 6px;
+    padding: 0.6rem 1rem;
+    margin-bottom: 2px;
+}
+
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+    background-color: #212529;
+    color: #fff;
+}
+
+/* Navbar brand icon */
+.navbar-brand i {
+    font-size: 1.4rem;
+}
+
+/* Badge tweaks */
+.badge {
+    font-weight: 500;
+    font-size: 0.75rem;
+}
+
+/* Table striping for admin */
+.table thead th {
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+/* Buttons */
+.btn-warning {
+    font-weight: 600;
+}
+
+/* Hero / landing section */
+.hero-section {
+    background: linear-gradient(135deg, #212529 0%, #495057 100%);
+    color: #fff;
+    padding: 4rem 0;
+    text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+}

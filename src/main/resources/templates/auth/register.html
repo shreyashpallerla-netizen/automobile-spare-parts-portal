@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - AutoParts Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link th:href="@{/css/main.css}" rel="stylesheet">
+</head>
+<body class="bg-light">
+<div class="min-vh-100 d-flex align-items-center justify-content-center py-4">
+    <div class="card shadow-lg" style="width: 480px;">
+        <div class="card-header bg-dark text-white text-center py-4">
+            <h3 class="mb-0"><i class="bi bi-gear-wide-connected me-2 text-warning"></i>AutoParts Portal</h3>
+            <p class="mb-0 text-muted small">Create your account</p>
+        </div>
+        <div class="card-body p-4">
+            <form th:action="@{/auth/register}" th:object="${registerDto}" method="post" novalidate>
+                <!-- Full Name -->
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Full Name</label>
+                    <input type="text" class="form-control" th:field="*{fullName}"
+                           th:classappend="${#fields.hasErrors('fullName')} ? 'is-invalid'" placeholder="John Doe">
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}"></div>
+                </div>
+                <!-- Username -->
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Username</label>
+                    <input type="text" class="form-control" th:field="*{username}"
+                           th:classappend="${#fields.hasErrors('username')} ? 'is-invalid'" placeholder="johndoe">
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+                </div>
+                <!-- Email -->
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Email</label>
+                    <input type="email" class="form-control" th:field="*{email}"
+                           th:classappend="${#fields.hasErrors('email')} ? 'is-invalid'" placeholder="john@example.com">
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+                </div>
+                <!-- Password -->
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Password</label>
+                    <input type="password" class="form-control" th:field="*{password}"
+                           th:classappend="${#fields.hasErrors('password')} ? 'is-invalid'"
+                           placeholder="Min 6 chars, mixed case + digit + special">
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+                </div>
+                <!-- Confirm Password -->
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Confirm Password</label>
+                    <input type="password" class="form-control" th:field="*{confirmPassword}"
+                           th:classappend="${#fields.hasErrors('confirmPassword')} ? 'is-invalid'" placeholder="Repeat password">
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}"></div>
+                </div>
+                <div class="d-grid mt-4">
+                    <button type="submit" class="btn btn-dark btn-lg">
+                        <i class="bi bi-person-plus me-2"></i>Register
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="card-footer text-center py-3">
+            <span class="text-muted small">Already have an account? </span>
+            <a th:href="@{/auth/login}" class="fw-semibold">Sign in</a>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

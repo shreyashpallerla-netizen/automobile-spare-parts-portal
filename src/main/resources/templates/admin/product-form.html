@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${productId != null} ? 'Edit Product - Admin' : 'New Product - Admin'">Product Form - Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link th:href="@{/css/main.css}" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-dark bg-dark sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand fw-bold" th:href="@{/admin}"><i class="bi bi-speedometer2 me-2 text-warning"></i>Admin Panel</a>
+        <div class="navbar-nav ms-auto flex-row gap-3">
+            <a class="nav-link" th:href="@{/admin/products}"><i class="bi bi-arrow-left me-1"></i>Back to Products</a>
+            <a class="nav-link" th:href="@{/auth/logout}">Logout</a>
+        </div>
+    </div>
+</nav>
+<main class="container my-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-dark text-white">
+                    <h4 class="mb-0">
+                        <i class="bi me-2" th:class="${productId != null} ? 'bi-pencil-square' : 'bi-plus-circle'"></i>
+                        <span th:text="${productId != null} ? 'Edit Product' : 'Add New Product'"></span>
+                    </h4>
+                </div>
+                <div class="card-body p-4">
+                    <form th:action="${productId != null} ? @{/admin/products/{id}/edit(id=${productId})} : @{/admin/products/new}"
+                          th:object="${productDto}" method="post" novalidate>
+
+                        <div class="row g-3">
+                            <div class="col-md-8">
+                                <label class="form-label fw-semibold">Product Name *</label>
+                                <input type="text" class="form-control" th:field="*{name}"
+                                       th:classappend="${#fields.hasErrors('name')} ? 'is-invalid'" placeholder="e.g. Bosch Spark Plug">
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label fw-semibold">SKU *</label>
+                                <input type="text" class="form-control" th:field="*{sku}"
+                                       th:classappend="${#fields.hasErrors('sku')} ? 'is-invalid'" placeholder="e.g. BSP-001">
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('sku')}" th:errors="*{sku}"></div>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label fw-semibold">Description *</label>
+                                <textarea class="form-control" th:field="*{description}" rows="3"
+                                          th:classappend="${#fields.hasErrors('description')} ? 'is-invalid'"
+                                          placeholder="Detailed product description..."></textarea>
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></div>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label fw-semibold">Category *</label>
+                                <input type="text" class="form-control" th:field="*{category}"
+                                       th:classappend="${#fields.hasErrors('category')} ? 'is-invalid'"
+                                       list="categoryList" placeholder="e.g. Engine">
+                                <datalist id="categoryList">
+                                    <option th:each="cat : ${categories}" th:value="${cat}"></option>
+                                </datalist>
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('category')}" th:errors="*{category}"></div>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label fw-semibold">Brand</label>
+                                <input type="text" class="form-control" th:field="*{brand}" placeholder="e.g. Bosch">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label fw-semibold">Price (₹) *</label>
+                                <input type="number" class="form-control" th:field="*{price}" step="0.01" min="0.01"
+                                       th:classappend="${#fields.hasErrors('price')} ? 'is-invalid'" placeholder="0.00">
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label fw-semibold">Stock Quantity *</label>
+                                <input type="number" class="form-control" th:field="*{stockQuantity}" min="0"
+                                       th:classappend="${#fields.hasErrors('stockQuantity')} ? 'is-invalid'">
+                                <div class="invalid-feedback" th:if="${#fields.hasErrors('stockQuantity')}" th:errors="*{stockQuantity}"></div>
+                            </div>
+                            <div class="col-md-8">
+                                <label class="form-label fw-semibold">Image URL</label>
+                                <input type="url" class="form-control" th:field="*{imageUrl}" placeholder="https://...">
+                            </div>
+                            <div class="col-md-4 d-flex align-items-end">
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="checkbox" th:field="*{active}" id="activeCheck">
+                                    <label class="form-check-label fw-semibold" for="activeCheck">Active / Visible</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex gap-2 mt-4">
+                            <button type="submit" class="btn btn-warning">
+                                <i class="bi bi-save me-1"></i>
+                                <span th:text="${productId != null} ? 'Update Product' : 'Create Product'"></span>
+                            </button>
+                            <a th:href="@{/admin/products}" class="btn btn-outline-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
