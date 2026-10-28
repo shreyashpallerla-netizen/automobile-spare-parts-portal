@@ -95,3 +95,8 @@ npm-debug.log
 # ---- Ansible ----
 ansible/*.retry
 ansible/vault_pass.txt
+
+# ---- Local DB & Runtime data ----
+data/
+*.mv.db
+*.trace.db
