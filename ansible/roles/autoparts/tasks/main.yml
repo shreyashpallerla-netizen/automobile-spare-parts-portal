@@ -1,0 +1,102 @@
+---
+# ============================================================
+# Ansible Role: autoparts - Tasks
+# ============================================================
+
+# ---- PostgreSQL Container ----
+- name: Pull PostgreSQL Docker image
+  community.docker.docker_image:
+    name: postgres:16-alpine
+    source: pull
+    state: present
+
+- name: Start PostgreSQL container (idempotent)
+  community.docker.docker_container:
+    name: autoparts-postgres
+    image: postgres:16-alpine
+    state: started
+    restart_policy: unless-stopped
+    networks:
+      - name: "{{ docker_network }}"
+    env:
+      POSTGRES_DB: "{{ db_name }}"
+      POSTGRES_USER: "{{ db_user }}"
+      POSTGRES_PASSWORD: "{{ db_password }}"
+    volumes:
+      - autoparts_postgres_data:/var/lib/postgresql/data
+    published_ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U {{ db_user }} -d {{ db_name }}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+- name: Wait for PostgreSQL to be healthy
+  community.docker.docker_container_info:
+    name: autoparts-postgres
+  register: pg_info
+  retries: 12
+  delay: 5
+  until: pg_info.container.State.Health.Status == "healthy"
+
+# ---- Save previous stable image for rollback ----
+- name: Tag current image as previous-stable (before update)
+  shell: |
+    docker tag {{ docker_image }}:latest {{ docker_image }}:previous-stable 2>/dev/null || true
+  ignore_errors: yes
+
+# ---- Pull Latest App Image ----
+- name: Pull latest AutoParts application image
+  community.docker.docker_image:
+    name: "{{ docker_image }}:{{ docker_tag }}"
+    source: pull
+    state: present
+  ignore_errors: yes  # Allow local builds when registry not available
+
+# ---- Deploy Application ----
+- name: Stop and remove existing app container (idempotent)
+  community.docker.docker_container:
+    name: autoparts-app
+    state: absent
+    force_kill: yes
+
+- name: Start AutoParts application container
+  community.docker.docker_container:
+    name: autoparts-app
+    image: "{{ docker_image }}:{{ docker_tag }}"
+    state: started
+    restart_policy: unless-stopped
+    networks:
+      - name: "{{ docker_network }}"
+    env:
+      DB_URL: "jdbc:postgresql://autoparts-postgres:5432/{{ db_name }}"
+      DB_USERNAME: "{{ db_user }}"
+      DB_PASSWORD: "{{ db_password }}"
+      DDL_AUTO: "update"
+      JAVA_OPTS: "-Xms256m -Xmx512m"
+    published_ports:
+      - "{{ app_port }}:8080"
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8080/actuator/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      start_period: 90s
+      retries: 3
+
+# ---- Nginx Reverse Proxy (optional) ----
+- name: Deploy Nginx reverse proxy config
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/sites-available/autoparts
+    mode: '0644'
+  ignore_errors: yes
+  notify: Reload Nginx
+
+- name: Enable Nginx site
+  file:
+    src: /etc/nginx/sites-available/autoparts
+    dest: /etc/nginx/sites-enabled/autoparts
+    state: link
+  ignore_errors: yes
+  notify: Reload Nginx

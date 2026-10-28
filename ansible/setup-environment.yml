@@ -1,0 +1,86 @@
+---
+# ============================================================
+# Ansible Playbook - Environment Setup
+# Installs Docker, configures system, creates directories
+# Idempotent: safe to run multiple times
+# ============================================================
+
+- name: Setup AutoParts Portal Environment
+  hosts: autoparts_servers
+  become: yes
+  gather_facts: yes
+
+  vars:
+    required_packages:
+      - docker.io
+      - docker-compose
+      - curl
+      - python3-pip
+      - apt-transport-https
+
+  tasks:
+    # ---- System Prerequisites ----
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+      when: ansible_os_family == "Debian"
+
+    - name: Install required packages
+      package:
+        name: "{{ required_packages }}"
+        state: present
+      when: ansible_os_family == "Debian"
+
+    - name: Ensure Docker service is running
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Create Docker network (idempotent)
+      community.docker.docker_network:
+        name: autoparts-network
+        state: present
+
+    # ---- Directory Structure ----
+    - name: Create application directories
+      file:
+        path: "{{ item }}"
+        state: directory
+        mode: '0755'
+      loop:
+        - /opt/autoparts
+        - /opt/autoparts/config
+        - /opt/autoparts/logs
+        - /opt/autoparts/backups
+        - /opt/autoparts/scripts
+
+    # ---- Configuration Files ----
+    - name: Deploy docker-compose.yml
+      template:
+        src: ../docker-compose.yml
+        dest: /opt/autoparts/docker-compose.yml
+        mode: '0644'
+      notify: Restart AutoParts
+
+    # ---- Firewall ----
+    - name: Allow port 8080 through firewall
+      ufw:
+        rule: allow
+        port: "8080"
+        proto: tcp
+      ignore_errors: yes
+
+    - name: Allow port 80 through firewall
+      ufw:
+        rule: allow
+        port: "80"
+        proto: tcp
+      ignore_errors: yes
+
+  handlers:
+    - name: Restart AutoParts
+      community.docker.docker_compose:
+        project_src: /opt/autoparts
+        restarted: yes

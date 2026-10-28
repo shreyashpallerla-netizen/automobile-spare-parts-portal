@@ -1,0 +1,41 @@
+---
+# ============================================================
+# Ansible Role: autoparts - Rollback Tasks
+# Rolls back to previous stable Docker image
+# ============================================================
+
+- name: Stop current app container
+  community.docker.docker_container:
+    name: autoparts-app
+    state: stopped
+  ignore_errors: yes
+
+- name: Start previous-stable version
+  community.docker.docker_container:
+    name: autoparts-app
+    image: "{{ docker_image }}:previous-stable"
+    state: started
+    restart_policy: unless-stopped
+    networks:
+      - name: "{{ docker_network }}"
+    env:
+      DB_URL: "jdbc:postgresql://autoparts-postgres:5432/{{ db_name }}"
+      DB_USERNAME: "{{ db_user }}"
+      DB_PASSWORD: "{{ db_password }}"
+      DDL_AUTO: "validate"
+    published_ports:
+      - "{{ app_port }}:8080"
+
+- name: Wait for rollback health check
+  uri:
+    url: "http://localhost:{{ app_port }}/actuator/health"
+    method: GET
+    status_code: 200
+  retries: 10
+  delay: 10
+  register: rollback_health
+
+- name: Report rollback result
+  debug:
+    msg: "✅ Rollback successful — running previous-stable image"
+  when: rollback_health.status == 200

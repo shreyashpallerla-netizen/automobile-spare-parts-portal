@@ -1,0 +1,19 @@
+---
+# ============================================================
+# Ansible Role Variables - AutoParts
+# ============================================================
+
+app_name: autoparts-portal
+app_version: "1.0.0"
+app_port: 8080
+
+docker_image: autoparts/autoparts-portal
+docker_tag: latest
+docker_network: autoparts-network
+
+db_name: autoparts
+db_user: postgres
+db_password: "{{ lookup('env', 'DB_PASSWORD') | default('postgres') }}"
+db_port: 5432
+
+backup_dir: /opt/autoparts/backups
