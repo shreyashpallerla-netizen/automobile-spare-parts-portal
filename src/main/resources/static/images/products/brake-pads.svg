@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="caliper" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ef5350"/>
+      <stop offset="50%" stop-color="#c62828"/>
+      <stop offset="100%" stop-color="#8e0000"/>
+    </linearGradient>
+    <linearGradient id="friction" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8d6e63"/>
+      <stop offset="50%" stop-color="#6d4c41"/>
+      <stop offset="100%" stop-color="#4e342e"/>
+    </linearGradient>
+    <linearGradient id="steel" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#cfd8dc"/>
+      <stop offset="100%" stop-color="#78909c"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="300" rx="20" fill="#1a1e24"/>
+  <circle cx="150" cy="150" r="115" fill="#222730" stroke="#2c323d" stroke-width="2"/>
+
+  <!-- Backing Steel Plate -->
+  <path d="M 60 145 C 80 115, 220 115, 240 145 L 235 180 C 215 155, 85 155, 65 180 Z" fill="url(#steel)" stroke="#37474f" stroke-width="3"/>
+  <rect x="50" y="140" width="18" height="24" rx="4" fill="url(#steel)"/>
+  <rect x="232" y="140" width="18" height="24" rx="4" fill="url(#steel)"/>
+  <!-- Friction Lining -->
+  <path d="M 78 140 C 95 120, 205 120, 222 140 L 216 168 C 200 152, 100 152, 84 168 Z" fill="url(#friction)" stroke="#3e2723" stroke-width="2"/>
+  <!-- Heat dissipation slot -->
+  <line x1="150" y1="126" x2="150" y2="158" stroke="#1a1e24" stroke-width="3"/>
+
+  <!-- Secondary Front Pad (Offset) -->
+  <g transform="translate(15, 25)">
+    <path d="M 60 145 C 80 115, 220 115, 240 145 L 235 180 C 215 155, 85 155, 65 180 Z" fill="url(#caliper)" stroke="#b71c1c" stroke-width="3"/>
+    <rect x="50" y="140" width="18" height="24" rx="4" fill="url(#caliper)"/>
+    <rect x="232" y="140" width="18" height="24" rx="4" fill="url(#caliper)"/>
+    <circle cx="85" cy="152" r="5" fill="#ffebee"/>
+    <circle cx="215" cy="152" r="5" fill="#ffebee"/>
+    <!-- Logo Badge -->
+    <rect x="120" y="142" width="60" height="15" rx="3" fill="#ffffff" opacity="0.9"/>
+    <text x="150" y="153" font-family="'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="9" fill="#c62828" text-anchor="middle">CERAMIC</text>
+  </g>
+
+  <text x="150" y="275" font-family="'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="13" fill="#90a4ae" text-anchor="middle" letter-spacing="2">BRAKE PADS</text>
+</svg>

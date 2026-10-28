@@ -44,10 +44,16 @@
                         </thead>
                         <tbody>
                             <tr th:each="item : ${order.items}">
-                                <td th:text="${item.product.name}"></td>
-                                <td class="text-center" th:text="${item.quantity}"></td>
-                                <td class="text-center" th:text="'₹' + ${#numbers.formatDecimal(item.unitPrice,1,2)}"></td>
-                                <td class="text-end" th:text="'₹' + ${#numbers.formatDecimal(item.subtotal,1,2)}"></td>
+                                <td class="align-middle">
+                                    <div class="d-flex align-items-center">
+                                        <img th:if="${item.product.imageUrl != null and !item.product.imageUrl.isBlank()}"
+                                             th:src="${item.product.imageUrl}" class="me-2 rounded bg-light border p-1" style="width:36px; height:36px; object-fit:contain;" alt="Product">
+                                        <span th:text="${item.product.name}"></span>
+                                    </div>
+                                </td>
+                                <td class="text-center align-middle" th:text="${item.quantity}"></td>
+                                <td class="text-center align-middle" th:text="'₹' + ${#numbers.formatDecimal(item.unitPrice,1,2)}"></td>
+                                <td class="text-end align-middle" th:text="'₹' + ${#numbers.formatDecimal(item.subtotal,1,2)}"></td>
                             </tr>
                         </tbody>
                         <tfoot>

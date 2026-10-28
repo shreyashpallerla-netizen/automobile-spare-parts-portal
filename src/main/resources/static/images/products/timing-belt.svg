@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <rect width="300" height="300" rx="20" fill="#1a1e24"/>
+  <circle cx="150" cy="150" r="115" fill="#222730" stroke="#2c323d" stroke-width="2"/>
+
+  <!-- Large Gear Top -->
+  <circle cx="150" cy="100" r="40" fill="#455a64" stroke="#90a4ae" stroke-width="5"/>
+  <circle cx="150" cy="100" r="15" fill="#1a1e24"/>
+  <!-- Teeth on large gear -->
+  <g stroke="#cfd8dc" stroke-width="4">
+    <line x1="150" y1="56" x2="150" y2="64"/>
+    <line x1="150" y1="136" x2="150" y2="144"/>
+    <line x1="106" y1="100" x2="114" y2="100"/>
+    <line x1="186" y1="100" x2="194" y2="100"/>
+  </g>
+
+  <!-- Small Gear Bottom -->
+  <circle cx="150" cy="195" r="24" fill="#455a64" stroke="#90a4ae" stroke-width="4"/>
+  <circle cx="150" cy="195" r="8" fill="#1a1e24"/>
+
+  <!-- Tensioner Pulley -->
+  <circle cx="105" cy="150" r="14" fill="#78909c" stroke="#cfd8dc" stroke-width="3"/>
+
+  <!-- Rubber Toothed Belt Loop -->
+  <path d="M 190 100 L 174 195 A 24 24 0 0 1 126 195 L 118 155 A 14 14 0 0 1 118 145 L 110 100 A 40 40 0 0 1 190 100 Z"
+        fill="none" stroke="#212529" stroke-width="12" stroke-linejoin="round"/>
+  <!-- Cog Teeth on Belt -->
+  <path d="M 190 100 L 174 195 A 24 24 0 0 1 126 195 L 118 155 A 14 14 0 0 1 118 145 L 110 100 A 40 40 0 0 1 190 100 Z"
+        fill="none" stroke="#ffb300" stroke-width="2" stroke-dasharray="3,5" stroke-linejoin="round"/>
+
+  <text x="150" y="275" font-family="'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="13" fill="#90a4ae" text-anchor="middle" letter-spacing="2">TIMING BELT</text>
+</svg>

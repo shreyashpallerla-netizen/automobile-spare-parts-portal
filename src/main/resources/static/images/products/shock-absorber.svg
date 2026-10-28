@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="spring" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ef5350"/>
+      <stop offset="50%" stop-color="#d32f2f"/>
+      <stop offset="100%" stop-color="#b71c1c"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="300" rx="20" fill="#1a1e24"/>
+  <circle cx="150" cy="150" r="115" fill="#222730" stroke="#2c323d" stroke-width="2"/>
+
+  <!-- Top Eyelet -->
+  <circle cx="150" cy="55" r="15" fill="#37474f" stroke="#78909c" stroke-width="4"/>
+  <circle cx="150" cy="55" r="7" fill="#1a1e24"/>
+
+  <!-- Chrome Shaft -->
+  <rect x="145" y="70" width="10" height="60" fill="#eceff1" stroke="#b0bec5"/>
+
+  <!-- Heavy Duty Coil Spring -->
+  <g fill="none" stroke="url(#spring)" stroke-width="12" stroke-linecap="round">
+    <path d="M 125 100 Q 150 115 175 100"/>
+    <path d="M 125 125 Q 150 140 175 125"/>
+    <path d="M 125 150 Q 150 165 175 150"/>
+    <path d="M 125 175 Q 150 190 175 175"/>
+  </g>
+
+  <!-- Damper Body Tube -->
+  <rect x="135" y="160" width="30" height="65" rx="4" fill="#263238" stroke="#455a64" stroke-width="3"/>
+  
+  <!-- Bottom Eyelet -->
+  <circle cx="150" cy="240" r="15" fill="#37474f" stroke="#78909c" stroke-width="4"/>
+  <circle cx="150" cy="240" r="7" fill="#1a1e24"/>
+
+  <text x="150" y="275" font-family="'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="13" fill="#90a4ae" text-anchor="middle" letter-spacing="2">SHOCK ABSORBER</text>
+</svg>

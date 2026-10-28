@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="filter-can" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0d47a1"/>
+      <stop offset="40%" stop-color="#1976d2"/>
+      <stop offset="70%" stop-color="#1565c0"/>
+      <stop offset="100%" stop-color="#0a2d64"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="300" rx="20" fill="#1a1e24"/>
+  <circle cx="150" cy="150" r="115" fill="#222730" stroke="#2c323d" stroke-width="2"/>
+
+  <!-- Canister Body -->
+  <path d="M 105 85 L 195 85 C 200 85, 205 90, 205 95 L 205 200 C 205 205, 200 210, 195 210 L 105 210 C 100 210, 95 205, 95 200 L 95 95 C 95 90, 100 85, 105 85 Z"
+        fill="url(#filter-can)" stroke="#0d47a1" stroke-width="3"/>
+  <!-- Top Grip Flutes -->
+  <rect x="95" y="85" width="110" height="15" fill="#0d47a1"/>
+  <line x1="110" y1="85" x2="110" y2="100" stroke="#ffffff" stroke-width="2" opacity="0.4"/>
+  <line x1="130" y1="85" x2="130" y2="100" stroke="#ffffff" stroke-width="2" opacity="0.4"/>
+  <line x1="150" y1="85" x2="150" y2="100" stroke="#ffffff" stroke-width="2" opacity="0.4"/>
+  <line x1="170" y1="85" x2="170" y2="100" stroke="#ffffff" stroke-width="2" opacity="0.4"/>
+  <line x1="190" y1="85" x2="190" y2="100" stroke="#ffffff" stroke-width="2" opacity="0.4"/>
+
+  <!-- Base Plate & Rubber Gasket -->
+  <rect x="90" y="210" width="120" height="12" rx="3" fill="#212529" stroke="#ffb300" stroke-width="2"/>
+
+  <!-- Brand Label Graphics -->
+  <rect x="110" y="125" width="80" height="50" rx="4" fill="#ffffff"/>
+  <text x="150" y="148" font-family="'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="12" fill="#0d47a1" text-anchor="middle">OIL FILTER</text>
+  <text x="150" y="165" font-family="'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="9" fill="#d32f2f" text-anchor="middle">MICRO-DRAIN</text>
+
+  <text x="150" y="275" font-family="'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="13" fill="#90a4ae" text-anchor="middle" letter-spacing="2">OIL FILTER</text>
+</svg>

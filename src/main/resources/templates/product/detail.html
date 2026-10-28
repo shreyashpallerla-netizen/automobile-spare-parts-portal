@@ -41,9 +41,9 @@
 
     <div class="row g-4">
         <div class="col-md-5">
-            <div class="card shadow-sm text-center p-4" style="min-height:300px;">
+            <div class="card shadow-sm text-center p-3 bg-dark d-flex align-items-center justify-content-center overflow-hidden" style="min-height:300px;">
                 <img th:if="${product.imageUrl != null and !product.imageUrl.isBlank()}"
-                     th:src="${product.imageUrl}" class="img-fluid" style="max-height:280px;" alt="Product">
+                     th:src="${product.imageUrl}" class="img-fluid rounded" style="max-height:280px; max-width:100%; object-fit:contain;" alt="Product">
                 <i th:unless="${product.imageUrl != null and !product.imageUrl.isBlank()}"
                    class="bi bi-gear text-muted my-auto" style="font-size:6rem;"></i>
             </div>

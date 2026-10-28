@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <defs>
+    <radialGradient id="clutch-facing" cx="50%" cy="50%" r="50%">
+      <stop offset="60%" stop-color="#4e342e"/>
+      <stop offset="90%" stop-color="#3e2723"/>
+      <stop offset="100%" stop-color="#271c19"/>
+    </radialGradient>
+  </defs>
+  <rect width="300" height="300" rx="20" fill="#1a1e24"/>
+  <circle cx="150" cy="150" r="115" fill="#222730" stroke="#2c323d" stroke-width="2"/>
+
+  <!-- Outer Friction Disc -->
+  <circle cx="150" cy="150" r="90" fill="url(#clutch-facing)" stroke="#5d4037" stroke-width="4"/>
+  <!-- Friction Segments / Rivets -->
+  <g fill="#cfd8dc">
+    <circle cx="150" cy="72" r="3"/>
+    <circle cx="150" cy="228" r="3"/>
+    <circle cx="72" cy="150" r="3"/>
+    <circle cx="228" cy="150" r="3"/>
+    <circle cx="95" cy="95" r="3"/>
+    <circle cx="205" cy="205" r="3"/>
+    <circle cx="95" cy="205" r="3"/>
+    <circle cx="205" cy="95" r="3"/>
+  </g>
+
+  <!-- Steel Inner Retainer Plate -->
+  <circle cx="150" cy="150" r="56" fill="#78909c" stroke="#cfd8dc" stroke-width="3"/>
+
+  <!-- Torsional Damper Springs (4 springs) -->
+  <rect x="138" y="102" width="24" height="12" rx="3" fill="#ffe082" stroke="#d32f2f" stroke-width="2"/>
+  <rect x="138" y="186" width="24" height="12" rx="3" fill="#ffe082" stroke="#d32f2f" stroke-width="2"/>
+  <rect x="102" y="138" width="12" height="24" rx="3" fill="#ffe082" stroke="#d32f2f" stroke-width="2"/>
+  <rect x="186" y="138" width="12" height="24" rx="3" fill="#ffe082" stroke="#d32f2f" stroke-width="2"/>
+
+  <!-- Center Splined Hub -->
+  <circle cx="150" cy="150" r="20" fill="#263238" stroke="#eceff1" stroke-width="3"/>
+  <circle cx="150" cy="150" r="10" fill="#1a1e24"/>
+
+  <text x="150" y="275" font-family="'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="13" fill="#90a4ae" text-anchor="middle" letter-spacing="2">CLUTCH DISC</text>
+</svg>

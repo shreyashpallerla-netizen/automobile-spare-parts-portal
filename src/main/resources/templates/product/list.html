@@ -93,9 +93,9 @@
     <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4" th:if="${!products.isEmpty()}">
         <div class="col" th:each="product : ${products.content}">
             <div class="card h-100 shadow-sm product-card">
-                <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height:180px;">
+                <div class="card-img-top bg-dark d-flex align-items-center justify-content-center overflow-hidden" style="height:190px;">
                     <img th:if="${product.imageUrl != null and !product.imageUrl.isBlank()}"
-                         th:src="${product.imageUrl}" class="img-fluid p-2" style="max-height:170px;" alt="Product image">
+                         th:src="${product.imageUrl}" class="img-fluid p-1" style="max-height:185px; max-width:100%; object-fit:contain;" alt="Product image">
                     <i th:unless="${product.imageUrl != null and !product.imageUrl.isBlank()}"
                        class="bi bi-gear text-muted" style="font-size:4rem;"></i>
                 </div>

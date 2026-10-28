@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bat-body" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#37474f"/>
+      <stop offset="100%" stop-color="#212529"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="300" rx="20" fill="#1a1e24"/>
+  <circle cx="150" cy="150" r="115" fill="#222730" stroke="#2c323d" stroke-width="2"/>
+
+  <!-- Battery Case -->
+  <rect x="65" y="110" width="170" height="115" rx="8" fill="url(#bat-body)" stroke="#263238" stroke-width="3"/>
+  <!-- Top Lid -->
+  <rect x="60" y="100" width="180" height="20" rx="4" fill="#d32f2f"/>
+  <!-- Carrying Handle -->
+  <path d="M 95 100 C 95 70, 205 70, 205 100" fill="none" stroke="#212529" stroke-width="6" stroke-linecap="round"/>
+  <!-- Positive (+) Terminal -->
+  <rect x="80" y="85" width="20" height="15" rx="2" fill="#cfd8dc" stroke="#90a4ae"/>
+  <circle cx="90" cy="110" r="5" fill="#b71c1c"/>
+  <text x="90" y="132" font-family="'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="18" fill="#ef5350" text-anchor="middle">+</text>
+  <!-- Negative (-) Terminal -->
+  <rect x="200" y="85" width="20" height="15" rx="2" fill="#cfd8dc" stroke="#90a4ae"/>
+  <circle cx="210" cy="110" r="5" fill="#1565c0"/>
+  <text x="210" y="130" font-family="'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="20" fill="#42a5f5" text-anchor="middle">-</text>
+
+  <!-- Charge Indicator "Magic Eye" -->
+  <circle cx="150" cy="110" r="6" fill="#00e676" stroke="#1b5e20" stroke-width="2"/>
+
+  <!-- Battery Label -->
+  <rect x="85" y="145" width="130" height="60" rx="4" fill="#263238"/>
+  <text x="150" y="170" font-family="'Segoe UI', Roboto, sans-serif" font-weight="900" font-size="16" fill="#ffca28" text-anchor="middle">12V 55Ah</text>
+  <text x="150" y="190" font-family="'Segoe UI', Roboto, sans-serif" font-weight="600" font-size="10" fill="#eceff1" text-anchor="middle">HEAVY DUTY</text>
+
+  <text x="150" y="275" font-family="'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="13" fill="#90a4ae" text-anchor="middle" letter-spacing="2">CAR BATTERY</text>
+</svg>

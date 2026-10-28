@@ -115,7 +115,11 @@ public class ProductServiceImpl implements ProductService {
         product.setStockQuantity(dto.getStockQuantity());
         product.setCategory(dto.getCategory());
         product.setBrand(dto.getBrand());
-        product.setImageUrl(dto.getImageUrl());
+        if (dto.getImageUrl() != null && !dto.getImageUrl().isBlank()) {
+            product.setImageUrl(dto.getImageUrl());
+        } else if (product.getImageUrl() == null || product.getImageUrl().isBlank()) {
+            product.setImageUrl("/images/products/default-part.svg");
+        }
         product.setActive(dto.isActive());
         return product;
     }

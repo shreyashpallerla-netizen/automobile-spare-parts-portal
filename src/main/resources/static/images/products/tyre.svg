@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <defs>
+    <radialGradient id="rubber" cx="50%" cy="50%" r="50%">
+      <stop offset="65%" stop-color="#263238"/>
+      <stop offset="90%" stop-color="#192024"/>
+      <stop offset="100%" stop-color="#101416"/>
+    </radialGradient>
+    <linearGradient id="rim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#eceff1"/>
+      <stop offset="50%" stop-color="#cfd8dc"/>
+      <stop offset="100%" stop-color="#78909c"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="300" rx="20" fill="#1a1e24"/>
+  <circle cx="150" cy="150" r="115" fill="#222730" stroke="#2c323d" stroke-width="2"/>
+
+  <!-- Tyre Outer Rubber -->
+  <circle cx="150" cy="150" r="95" fill="url(#rubber)" stroke="#0d1117" stroke-width="6"/>
+  
+  <!-- Tread Grooves around perimeter -->
+  <g stroke="#101416" stroke-width="4">
+    <line x1="150" y1="50" x2="150" y2="65"/>
+    <line x1="150" y1="235" x2="150" y2="250"/>
+    <line x1="50" y1="150" x2="65" y2="150"/>
+    <line x1="235" y1="150" x2="250" y2="150"/>
+    <line x1="79" y1="79" x2="90" y2="90"/>
+    <line x1="210" y1="210" x2="221" y2="221"/>
+    <line x1="79" y1="221" x2="90" y2="210"/>
+    <line x1="210" y1="90" x2="221" y2="79"/>
+    <line x1="110" y1="57" x2="115" y2="71"/>
+    <line x1="190" y1="57" x2="185" y2="71"/>
+    <line x1="110" y1="243" x2="115" y2="229"/>
+    <line x1="190" y1="243" x2="185" y2="229"/>
+  </g>
+  
+  <!-- Red Brake Caliper behind spokes -->
+  <path d="M 180 110 A 55 55 0 0 1 205 160 L 190 155 A 42 42 0 0 0 170 120 Z" fill="#d32f2f"/>
+
+  <!-- Alloy Rim Outer Lip -->
+  <circle cx="150" cy="150" r="56" fill="#455a64" stroke="url(#rim)" stroke-width="6"/>
+  <!-- Rim Spokes (5 Split Spokes) -->
+  <g fill="url(#rim)" stroke="#37474f" stroke-width="1">
+    <path d="M 144 150 L 140 100 L 160 100 L 156 150 Z"/>
+    <path d="M 144 150 L 140 100 L 160 100 L 156 150 Z" transform="rotate(72 150 150)"/>
+    <path d="M 144 150 L 140 100 L 160 100 L 156 150 Z" transform="rotate(144 150 150)"/>
+    <path d="M 144 150 L 140 100 L 160 100 L 156 150 Z" transform="rotate(216 150 150)"/>
+    <path d="M 144 150 L 140 100 L 160 100 L 156 150 Z" transform="rotate(288 150 150)"/>
+  </g>
+  <!-- Center Cap & Lug Nuts -->
+  <circle cx="150" cy="150" r="18" fill="#212529" stroke="url(#rim)" stroke-width="2"/>
+  <circle cx="150" cy="150" r="7" fill="#ffb300"/>
+  <circle cx="150" cy="138" r="2.5" fill="#cfd8dc"/>
+  <circle cx="161" cy="146" r="2.5" fill="#cfd8dc"/>
+  <circle cx="157" cy="159" r="2.5" fill="#cfd8dc"/>
+  <circle cx="143" cy="159" r="2.5" fill="#cfd8dc"/>
+  <circle cx="139" cy="146" r="2.5" fill="#cfd8dc"/>
+
+  <text x="150" y="275" font-family="'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="13" fill="#90a4ae" text-anchor="middle" letter-spacing="2">RADIAL TYRE</text>
+</svg>

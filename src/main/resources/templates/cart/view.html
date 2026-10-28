@@ -51,7 +51,10 @@
                             <tr th:each="item : ${cartItems}">
                                 <td>
                                     <div class="d-flex align-items-center">
-                                        <i class="bi bi-gear me-3 text-warning fs-4"></i>
+                                        <img th:if="${item.product.imageUrl != null and !item.product.imageUrl.isBlank()}"
+                                             th:src="${item.product.imageUrl}" class="me-3 rounded bg-light border p-1" style="width:48px; height:48px; object-fit:contain;" alt="Product">
+                                        <i th:unless="${item.product.imageUrl != null and !item.product.imageUrl.isBlank()}"
+                                           class="bi bi-gear me-3 text-warning fs-4"></i>
                                         <div>
                                             <strong th:text="${item.product.name}"></strong>
                                             <br><small class="text-muted" th:text="${item.product.sku}"></small>

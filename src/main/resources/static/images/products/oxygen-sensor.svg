@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="probe" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#eceff1"/>
+      <stop offset="50%" stop-color="#b0bec5"/>
+      <stop offset="100%" stop-color="#607d8b"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="300" rx="20" fill="#1a1e24"/>
+  <circle cx="150" cy="150" r="115" fill="#222730" stroke="#2c323d" stroke-width="2"/>
+
+  <!-- Harness Cable -->
+  <path d="M 150 70 C 130 45, 90 75, 100 110 C 108 140, 140 100, 150 125" fill="none" stroke="#212529" stroke-width="8" stroke-linecap="round"/>
+  <path d="M 150 70 C 130 45, 90 75, 100 110 C 108 140, 140 100, 150 125" fill="none" stroke="#37474f" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- Hex Nut Collar -->
+  <polygon points="135,130 165,130 172,155 128,155" fill="url(#probe)" stroke="#37474f" stroke-width="2"/>
+  <!-- Threaded section -->
+  <rect x="138" y="155" width="24" height="25" fill="url(#probe)"/>
+  <line x1="138" y1="162" x2="162" y2="162" stroke="#455a64" stroke-width="2.5"/>
+  <line x1="138" y1="170" x2="162" y2="170" stroke="#455a64" stroke-width="2.5"/>
+  <!-- Perforated Tip / Sensor Shroud -->
+  <path d="M 140 180 L 160 180 L 157 215 C 157 220, 143 220, 143 215 Z" fill="url(#probe)" stroke="#37474f" stroke-width="2"/>
+  <!-- Slots in shroud -->
+  <ellipse cx="150" cy="190" rx="3" ry="1.5" fill="#1a1e24"/>
+  <ellipse cx="145" cy="198" rx="2.5" ry="1.5" fill="#1a1e24"/>
+  <ellipse cx="155" cy="198" rx="2.5" ry="1.5" fill="#1a1e24"/>
+  <ellipse cx="150" cy="206" rx="3" ry="1.5" fill="#1a1e24"/>
+
+  <text x="150" y="275" font-family="'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="13" fill="#90a4ae" text-anchor="middle" letter-spacing="2">O2 SENSOR</text>
+</svg>
